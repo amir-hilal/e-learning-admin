@@ -1,0 +1,70 @@
+:root {
+  --primary-color: #0300a7;
+  --secondary-color: #080c2b;
+  --accent-color: #00BCD4;
+  --background-color: #F5F5F5;
+  --text-color: #333333;
+}
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+    color: var(--text-color);
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+
+.modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+}
+
+.overflow-x-scroll{
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 #f1f1f1; /* Firefox */
+}
+
+.overflow-x-scroll::-webkit-scrollbar {
+  height: 8px; /* Height of horizontal scrollbar */
+}
+
+.overflow-x-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.overflow-x-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
