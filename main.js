@@ -1,11 +1,16 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-require('@electron/remote/main').initialize();
-
-let mainWindow;
+const url = require('url');
 
 function createWindow() {
-    mainWindow = new BrowserWindow({
+    const startUrl = 'http://localhost:3000'; // Development server URL
+    const productionUrl = url.format({
+        pathname: path.join(__dirname, 'e-learning-frontend-admin/build', 'index.html'),
+        protocol: 'file:',
+        slashes: true,
+    });
+
+    const win = new BrowserWindow({
         width: 800,
         height: 600,
         webPreferences: {
@@ -15,22 +20,24 @@ function createWindow() {
         },
     });
 
-    mainWindow.loadURL('http://localhost:3000');
-    mainWindow.on('closed', function () {
-        mainWindow = null;
-    });
+    win.loadURL(startUrl);
+
+    // Uncomment this line for production build
+    // win.loadURL(productionUrl);
+
+    win.webContents.openDevTools(); // Open DevTools by default
 }
 
 app.on('ready', createWindow);
 
-app.on('window-all-closed', function () {
+app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {
         app.quit();
     }
 });
 
-app.on('activate', function () {
-    if (mainWindow === null) {
+app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
         createWindow();
     }
 });

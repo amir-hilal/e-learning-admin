@@ -1,17 +1,51 @@
 {
+  "name": "e-learning-admin",
+  "version": "1.0.0",
+  "description": "E-learning Admin Desktop App",
   "main": "main.js",
+  "author": "Amir Hilal",
   "scripts": {
     "start": "concurrently \"npm run react-start\" \"npm run electron-start\"",
-    "react-start": "cd frontend && npm start",
-    "electron-start": "wait-on http://localhost:3000 && electron ."
+    "react-start": "cd e-learning-frontend-admin && npm start",
+    "electron-start": "wait-on http://localhost:3000 && electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder build --publish never"
+  },
+  "build": {
+    "appId": "com.elearn.elearningadmin",
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "package.json",
+      "e-learning-frontend-admin/build/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.education"
+    },
+    "win": {
+      "target": "nsis",
+      "publisherName": "Elearn"
+    },
+    "linux": {
+      "target": "AppImage",
+      "category": "Education"
+    }
   },
   "dependencies": {
     "@electron/remote": "^2.1.2",
     "concurrently": "^8.2.2",
-    "electron": "^31.3.1",
+    "e-learning-admin": "file:",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
     "primereact": "^10.8.0",
     "wait-on": "^6.0.0"
+  },
+  "devDependencies": {
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3"
   }
 }
