@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import UserCard from '../components/UserCard';
 import { fetchUsers, deleteUserAsync } from '../slices/usersSlice';
+import { useNavigate } from 'react-router-dom';
 
 const UsersPage = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch();
     const users = useSelector((state) => state.users.users);
 
@@ -19,7 +21,7 @@ const UsersPage = () => {
 
     return (
         <div className="p-4 min-h-screen min-w-full bg-gray-100">
-            <h2 className="text-2xl font-semibold mb-4">All Users</h2>
+            <h2 className="text-2xl font-semibold mb-4 cursor-pointer" onClick={() =>navigate('/')}>&#10229; All Users</h2>
             <div className="grid gap-4">
                 {users.map((user) => (
                     <UserCard key={user._id} user={user} onDelete={handleDelete} />

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
-
+import { useNavigate } from 'react-router-dom';
 const HandleWithdrawalPage = () => {
+    const navigate = useNavigate()
     const [forms, setForms] = useState([]);
 
     useEffect(() => {
@@ -28,7 +29,7 @@ const HandleWithdrawalPage = () => {
 
     return (
         <div className="p-4">
-            <h2 className="mb-4">Withdrawals</h2>
+            <h2 className="mb-4 cursor-pointer" onClick={() =>navigate('/')}>&#10229; Withdrawals</h2>
             <div className="grid">
                 {forms.map((form) => (
                     <div key={form._id} className="col-12 md:col-6 lg:col-4 p-3">
